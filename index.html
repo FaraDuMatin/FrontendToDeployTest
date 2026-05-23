@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Strings</title>
+</head>
+<body>
+  <h1>Strings Demo</h1>
+  <button onclick="loadStrings()">Load Strings</button>
+  <ul id="list"></ul>
+
+  <script>
+    async function loadStrings() {
+      const res = await fetch("http://127.0.0.1:8000/strings");
+      const data = await res.json();
+      const list = document.getElementById("list");
+      list.innerHTML = "";
+      data.forEach(s => {
+        const li = document.createElement("li");
+        li.textContent = s;
+        list.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
